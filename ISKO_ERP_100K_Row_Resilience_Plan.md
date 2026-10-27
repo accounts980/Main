@@ -479,19 +479,18 @@ Every one of the 120 current sheets is listed with its measured size and the rec
 |---|----------------|-----------|-----|----|------------------------------|--------------------|--------------|
 | 1 | PO Line ID | ID PO No-nn | SN | M | PO No & '-' & line number in the pad. | H: unique | GRN links to this key. |
 | 2 | PO No | ID | SN | M | From pad header. | H: exists in tblPOHead | Header link. |
-| 3 | Item Type | Code | DD | M | RM / CONSUMABLE / OTHER. | H: list | Routes the line to GRN or consumable receipt. |
-| 4 | Item ID | ID | DD | M | M_Material or M_Consumable by Item Type. | H: active item | Stable key. |
-| 5 | Item Description | Text | SN | M | Copied at posting. | - | History. |
-| 6 | Grade | Code | SN | C | From material (RM). | - | Lot compatibility. |
-| 7 | Thk mm | Decimal mm | SN | C | From material (RM). | - | Lot compatibility. |
-| 8 | Length mm | Integer mm | IN | C | Default standard length. | H: >0 for sheet RM | Theoretical weight. |
-| 9 | Width mm | Integer mm | IN | C | Default standard width. | H: >0 for sheet RM | Theoretical weight. |
-| 10 | HSN | Text | SN | O | From item master. | - | Reference for accounts. |
-| 11 | Ordered Qty | Decimal | IN | M |  | H: > 0 | Pending calculation. |
-| 12 | Unit | Code KG/NOS/SHEETS/... | SN | M | From item master. | H: list | UOM control. |
-| 13 | Rate Rs/unit | Decimal Rs | IN | M |  | H: > 0; W: differs from last GRN rate by > TolRate | Valuation reference. |
-| 14 | Line Value Rs | Decimal Rs | CE | M | Ordered Qty x Rate. | - | PO value. |
-| 15 | Due Date | Date | IN | M | Default = header Delivery By. | W: < PO Date | Overdue by line. |
+| 3 | Item ID | ID | DD | M | M_Material or M_Consumable (the ID prefix shows which). | H: active item | Stable key. |
+| 4 | Item Description | Text | SN | M | Copied at posting. | - | History. |
+| 5 | Grade | Code | SN | C | From material (RM). | - | Lot compatibility. |
+| 6 | Thk mm | Decimal mm | SN | C | From material (RM). | - | Lot compatibility. |
+| 7 | Length mm | Integer mm | IN | C | Default standard length. | H: >0 for sheet RM | Theoretical weight. |
+| 8 | Width mm | Integer mm | IN | C | Default standard width. | H: >0 for sheet RM | Theoretical weight. |
+| 9 | HSN | Text | SN | O | From item master. | - | Reference for accounts. |
+| 10 | Ordered Qty | Decimal | IN | M |  | H: > 0 | Pending calculation. |
+| 11 | Unit | Code KG/NOS/SHEETS/... | SN | M | From item master. | H: list | UOM control. |
+| 12 | Rate Rs/unit | Decimal Rs | IN | M |  | H: > 0; W: differs from last GRN rate by > TolRate | Valuation reference. |
+| 13 | Line Value Rs | Decimal Rs | CE | M | Ordered Qty x Rate. | - | PO value. |
+| 14 | Due Date | Date | IN | M | Default = header Delivery By. | W: < PO Date | Overdue by line. |
 
 #### 9.3 PO Status (calculated view - not a register) - `POStatus`
 
@@ -1582,7 +1581,7 @@ Every column of every Excel Table in the Stores, Production and Dispatch books, 
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 11 | Req Item | Remove | - | Requisition removed. |
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 12 | Req Line (calc) | Remove | - | Requisition removed. |
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 13 | Item | Rename | Item ID + Item Description |  |
-| 1 Stores | 1.2 Purchase Order / tblPOLine | 14 | Type (calc) | Rename | Item Type |  |
+| 1 Stores | 1.2 Purchase Order / tblPOLine | 14 | Type (calc) | Remove | - | Item type not needed; the Item ID shows whether it is RM or consumable. |
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 15 | Grade (calc) | Keep | Grade (snapshot) |  |
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 16 | Thk mm (calc) | Keep | Thk mm (snapshot) |  |
 | 1 Stores | 1.2 Purchase Order / tblPOLine | 17 | Length mm | Keep | Length mm |  |

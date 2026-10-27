@@ -18,7 +18,6 @@
     "cols": [
      "Line",
      "PO Line ID",
-     "Item Type",
      "Item ID",
      "Grade",
      "Thk mm",
@@ -162,7 +161,6 @@
     "cols": [
      "PO Line ID",
      "PO No",
-     "Item Type",
      "Item ID",
      "Grade",
      "Thk mm",
