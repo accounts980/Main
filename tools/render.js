@@ -29,7 +29,7 @@ const path = require('path');
     const page = await browser.newPage();
     await page.goto('file://' + path.resolve(a), { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
-    const foot = `<div style="font-family:Inter,'DejaVu Sans',Arial,sans-serif;font-size:7.5px;color:#5A6B82;width:100%;padding:0 14mm;display:flex;justify-content:space-between;">
+    const foot = process.env.FOOTER ? process.env.FOOTER : `<div style="font-family:Inter,'DejaVu Sans',Arial,sans-serif;font-size:7.5px;color:#5A6B82;width:100%;padding:0 14mm;display:flex;justify-content:space-between;">
       <span>ISKO Excel ERP Rebuild Plan - 100,000-Row Resilience Blueprint - v1.0 - 27 Oct 2026 - planning document, not a live ERP</span>
       <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>`;
     await page.pdf({ path: b, preferCSSPageSize: true, printBackground: true, displayHeaderFooter: true,

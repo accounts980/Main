@@ -1,0 +1,1575 @@
+{
+ "Stores": {
+  "file": "1 ISKO Stores FY2027-28 (prototype).xlsx",
+  "sheets": [
+   {
+    "sheet": "README",
+    "kind": "doc",
+    "purpose": "How the book works, sheet order, colour legend, daily routine.",
+    "user": "Everyone",
+    "cols": [],
+    "image": "assets/prototype/Stores_01_README.png"
+   },
+   {
+    "sheet": "PO Entry",
+    "kind": "pad",
+    "purpose": "Create a PO (header + lines) with checks; post to PO Header and PO Line registers.",
+    "user": "Purchase / Stores",
+    "cols": [
+     "Line",
+     "PO Line ID",
+     "Item Type",
+     "Item ID",
+     "Grade",
+     "Thk mm",
+     "L mm",
+     "W mm",
+     "Ordered kg",
+     "Unit",
+     "Rate Rs",
+     "Line Value Rs",
+     "Due Date",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Stores_02_PO_Entry.png"
+   },
+   {
+    "sheet": "GRN Entry",
+    "kind": "pad",
+    "purpose": "Receive lots against open PO lines; theoretical weight, rate and excess checks.",
+    "user": "Stores",
+    "cols": [
+     "Lot ID",
+     "GRN Date",
+     "Supplier ID",
+     "Supplier Inv No",
+     "PO Line ID",
+     "Material ID",
+     "Grade Code",
+     "Thk mm",
+     "L mm",
+     "W mm",
+     "Form",
+     "Sheets",
+     "Received kg",
+     "Theo kg",
+     "Theo Var %",
+     "Bill Rate Rs",
+     "PO Rate Rs",
+     "PO Pending kg",
+     "Excess kg",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Stores_03_GRN_Entry.png"
+   },
+   {
+    "sheet": "RM Move Entry",
+    "kind": "pad",
+    "purpose": "Issue RM to a machine (creates batch) and record returns against a batch; FIFO suggestion and availability hard stop.",
+    "user": "Stores",
+    "cols": [
+     "Move ID",
+     "Move Date",
+     "Movement",
+     "Batch ID",
+     "Material ID",
+     "FIFO Lot",
+     "Lot ID",
+     "Override Reason",
+     "Form",
+     "Sheets",
+     "Weight kg",
+     "Avail kg",
+     "Avail Sh",
+     "Stock Effect kg",
+     "Rate Rs",
+     "Machine ID",
+     "Issued To",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Stores_04_RM_Move_Entry.png"
+   },
+   {
+    "sheet": "Cons Entry",
+    "kind": "pad",
+    "purpose": "Issue / return consumables with balance hard stop.",
+    "user": "Stores",
+    "cols": [
+     "Cons Move ID",
+     "Move Date",
+     "Movement",
+     "Item ID",
+     "Item Name",
+     "Qty",
+     "Balance Before",
+     "Avg Rate Rs",
+     "Value Rs",
+     "Issued To",
+     "Where Used",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Stores_05_Cons_Entry.png"
+   },
+   {
+    "sheet": "Adjust Entry",
+    "kind": "pad",
+    "purpose": "Approved corrections with reason and independent approver (no counts).",
+    "user": "Stores + approver",
+    "cols": [
+     "Adj ID",
+     "Adj Date",
+     "Stock Type",
+     "Lot / Item ID",
+     "Direction",
+     "Adj kg / Qty",
+     "Available",
+     "Rate Rs",
+     "Value Rs",
+     "Reason Code",
+     "Reference",
+     "Requested By",
+     "Approved By",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Stores_06_Adjust_Entry.png"
+   },
+   {
+    "sheet": "PO Header Register",
+    "kind": "reg",
+    "purpose": "One row per PO (no requisition reference).",
+    "user": "Read only (posted)",
+    "cols": [
+     "PO No",
+     "PO Date",
+     "Supplier ID",
+     "Supplier Name",
+     "Delivery By",
+     "Pay Days",
+     "Delivery Location",
+     "Approved By",
+     "PO Status",
+     "Posted At",
+     "Posted By",
+     "Entry Source"
+    ],
+    "image": "assets/prototype/Stores_07_PO_Header_Register.png"
+   },
+   {
+    "sheet": "PO Line Register",
+    "kind": "reg",
+    "purpose": "One row per PO item.",
+    "user": "Read only (posted)",
+    "cols": [
+     "PO Line ID",
+     "PO No",
+     "Item Type",
+     "Item ID",
+     "Grade",
+     "Thk mm",
+     "L mm",
+     "W mm",
+     "Ordered kg",
+     "Unit",
+     "Rate Rs",
+     "Line Value Rs",
+     "Due Date",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Stores_08_PO_Line_Register.png"
+   },
+   {
+    "sheet": "GRN Register",
+    "kind": "reg",
+    "purpose": "Every received lot with its permanent Lot ID.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Lot ID",
+     "GRN Date",
+     "Supplier ID",
+     "Supplier Inv No",
+     "Invoice Date",
+     "PO Line ID",
+     "Material ID",
+     "Grade Code",
+     "Thk mm",
+     "L mm",
+     "W mm",
+     "Form",
+     "Sheets",
+     "Received kg",
+     "Theo kg",
+     "Theo Var %",
+     "Bill Rate Rs",
+     "PO Rate Rs",
+     "Excess kg",
+     "Lot Value Rs",
+     "Posted At",
+     "Entry Source"
+    ],
+    "image": "assets/prototype/Stores_09_GRN_Register.png"
+   },
+   {
+    "sheet": "Lot QC Register",
+    "kind": "reg",
+    "purpose": "QC status per lot (accepted / hold / rejected) and excess decisions.",
+    "user": "QC / Purchase",
+    "cols": [
+     "QC Event ID",
+     "Lot ID",
+     "QC Date",
+     "QC Status",
+     "Rejected kg",
+     "Rejected Sheets",
+     "Excess Decision",
+     "Decided By",
+     "Accepted kg",
+     "Accepted Sheets",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Stores_10_Lot_QC_Register.png"
+   },
+   {
+    "sheet": "RM Move Register",
+    "kind": "reg",
+    "purpose": "All RM issues, returns, offcut/damaged returns, stores scrap, returns to supplier.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Move ID",
+     "Move Date",
+     "Movement",
+     "Batch ID",
+     "Material ID",
+     "Lot ID",
+     "Form",
+     "Sheets",
+     "Weight kg",
+     "Stock Effect kg",
+     "Stock Effect Sh",
+     "Rate Rs",
+     "Value Rs",
+     "Machine ID",
+     "Issued To",
+     "Purpose",
+     "Avail kg Before",
+     "Posted At",
+     "Reverses ID"
+    ],
+    "image": "assets/prototype/Stores_11_RM_Move_Register.png"
+   },
+   {
+    "sheet": "Cons Receipt Register",
+    "kind": "reg",
+    "purpose": "Consumable receipts.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Receipt ID",
+     "Receipt Date",
+     "Item ID",
+     "Qty",
+     "Bill Rate Rs",
+     "Value Rs",
+     "Receipt Type",
+     "Supplier ID",
+     "Bill No",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Stores_12_Cons_Receipt_Register.png"
+   },
+   {
+    "sheet": "Cons Issue Register",
+    "kind": "reg",
+    "purpose": "Consumable issues and returns.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Cons Move ID",
+     "Move Date",
+     "Movement",
+     "Item ID",
+     "Qty",
+     "Stock Effect",
+     "Rate Rs",
+     "Value Rs",
+     "Issued To",
+     "Where Used",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Stores_13_Cons_Issue_Register.png"
+   },
+   {
+    "sheet": "Adjust Register",
+    "kind": "reg",
+    "purpose": "Approved stock corrections (RM lots and consumables).",
+    "user": "Read only (posted)",
+    "cols": [
+     "Adj ID",
+     "Adj Date",
+     "Stock Type",
+     "Lot / Item ID",
+     "Direction",
+     "Adj kg / Qty",
+     "Signed kg",
+     "Rate Rs",
+     "Value Rs",
+     "Reason Code",
+     "Reference",
+     "Requested By",
+     "Approved By",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Stores_14_Adjust_Register.png"
+   },
+   {
+    "sheet": "PO Status",
+    "kind": "bal",
+    "purpose": "Received and pending quantity per open PO line; feeds GRN dropdown and MIS.",
+    "user": "Purchase (read only)",
+    "cols": [
+     "PO Line ID",
+     "Supplier ID",
+     "Item ID",
+     "Ordered kg",
+     "Received kg",
+     "Pending kg",
+     "Due Date",
+     "Overdue Days",
+     "Status"
+    ],
+    "image": "assets/prototype/Stores_15_PO_Status.png"
+   },
+   {
+    "sheet": "Lot Balance",
+    "kind": "bal",
+    "purpose": "Available kg and sheets per open lot, eligibility, value, ageing.",
+    "user": "Stores (read only)",
+    "cols": [
+     "Lot ID",
+     "Material ID",
+     "GRN Date",
+     "QC Status",
+     "Issue Eligible",
+     "Accepted kg",
+     "Accepted Sh",
+     "Movement kg",
+     "Movement Sh",
+     "Adjust kg",
+     "Available kg",
+     "Available Sh",
+     "Rate Rs",
+     "Value Rs",
+     "Age Days",
+     "Status"
+    ],
+    "image": "assets/prototype/Stores_16_Lot_Balance.png"
+   },
+   {
+    "sheet": "Cons Balance",
+    "kind": "bal",
+    "purpose": "Consumable stock, value and re-order status.",
+    "user": "Stores (read only)",
+    "cols": [
+     "Item ID",
+     "Item Name",
+     "Unit",
+     "Received",
+     "Net Issued",
+     "Adjusted",
+     "Balance",
+     "Avg Rate Rs",
+     "Value Rs",
+     "Min Level",
+     "Status"
+    ],
+    "image": "assets/prototype/Stores_17_Cons_Balance.png"
+   },
+   {
+    "sheet": "M_Material",
+    "kind": "mst",
+    "purpose": "Material identity, grade code (prefix of Lot ID), standard size and sheet weight, minimum level.",
+    "user": "Stores head",
+    "cols": [
+     "Material ID",
+     "Grade Code",
+     "Grade",
+     "Thk mm",
+     "Std L mm",
+     "Std W mm",
+     "Std Sheet kg",
+     "Min Level kg",
+     "Active"
+    ],
+    "image": "assets/prototype/Stores_18_M_Material.png"
+   },
+   {
+    "sheet": "M_Grade",
+    "kind": "mst",
+    "purpose": "Grade codes.",
+    "user": "Stores head",
+    "cols": [
+     "Grade Code",
+     "Grade",
+     "Description"
+    ],
+    "image": "assets/prototype/Stores_19_M_Grade.png"
+   },
+   {
+    "sheet": "M_Supplier",
+    "kind": "mst",
+    "purpose": "RM and consumable suppliers with Tally ledger mapping and terms.",
+    "user": "Purchase",
+    "cols": [
+     "Supplier ID",
+     "Supplier Name",
+     "Supplies",
+     "GSTIN",
+     "Pay Days",
+     "Tally Ledger",
+     "Email (reference)",
+     "Active"
+    ],
+    "image": "assets/prototype/Stores_20_M_Supplier.png"
+   },
+   {
+    "sheet": "M_Consumable",
+    "kind": "mst",
+    "purpose": "Consumable item list.",
+    "user": "Stores head",
+    "cols": [
+     "Item ID",
+     "Item Name",
+     "Category",
+     "Unit",
+     "Min Level",
+     "Active"
+    ],
+    "image": "assets/prototype/Stores_21_M_Consumable.png"
+   },
+   {
+    "sheet": "M_Reason",
+    "kind": "mst",
+    "purpose": "Reason codes for rate variance, lot override, adjustment and reversal.",
+    "user": "Stores head",
+    "cols": [
+     "Code",
+     "Reason",
+     "Used For"
+    ],
+    "image": "assets/prototype/Stores_22_M_Reason.png"
+   },
+   {
+    "sheet": "M_WhereUsed",
+    "kind": "mst",
+    "purpose": "Consumable cost centres.",
+    "user": "Stores head",
+    "cols": [
+     "Where Used",
+     "Type"
+    ],
+    "image": "assets/prototype/Stores_23_M_WhereUsed.png"
+   },
+   {
+    "sheet": "X_Product",
+    "kind": "imp",
+    "purpose": "Products for issue purpose (single master owned by Production).",
+    "user": "Read only",
+    "cols": [
+     "Product ID",
+     "Product Name",
+     "Customer ID",
+     "Active",
+     "Run ID"
+    ],
+    "image": "assets/prototype/Stores_24_X_Product.png"
+   },
+   {
+    "sheet": "X_Machine",
+    "kind": "imp",
+    "purpose": "Machines for RM issues.",
+    "user": "Read only",
+    "cols": [
+     "Machine ID",
+     "Machine",
+     "Process",
+     "Active"
+    ],
+    "image": "assets/prototype/Stores_25_X_Machine.png"
+   },
+   {
+    "sheet": "X_People",
+    "kind": "imp",
+    "purpose": "People who receive, issue, approve.",
+    "user": "Read only",
+    "cols": [
+     "Person ID",
+     "Name (masked)",
+     "Role",
+     "Active"
+    ],
+    "image": "assets/prototype/Stores_26_X_People.png"
+   },
+   {
+    "sheet": "Posting Log",
+    "kind": "ctl",
+    "purpose": "Evidence of every posting.",
+    "user": "Book owner",
+    "cols": [
+     "Posted At",
+     "Register",
+     "Rows Posted",
+     "Pad Total kg / Qty",
+     "Register Total After",
+     "Posted By",
+     "Method"
+    ],
+    "image": "assets/prototype/Stores_27_Posting_Log.png"
+   },
+   {
+    "sheet": "Control Totals",
+    "kind": "ctl",
+    "purpose": "Row counts and totals per register for reconciliation.",
+    "user": "MIS / Finance",
+    "cols": [
+     "Register",
+     "Rows",
+     "Total kg / Qty",
+     "Total Value Rs"
+    ],
+    "image": "assets/prototype/Stores_28_Control_Totals.png"
+   },
+   {
+    "sheet": "Settings",
+    "kind": "doc",
+    "purpose": "Financial year, as-on date, lock date, prefixes, tolerances, data folder.",
+    "user": "Book owner only",
+    "cols": [
+     "Setting",
+     "Value",
+     "Note"
+    ],
+    "image": "assets/prototype/Stores_29_Settings.png"
+   },
+   {
+    "sheet": "Lists",
+    "kind": "doc",
+    "purpose": "Dropdown sources (movement types, forms, statuses, units).",
+    "user": "Book owner",
+    "cols": [
+     "Movement",
+     "Form",
+     "QC Status",
+     "Excess Decision",
+     "Stock Type",
+     "Direction"
+    ],
+    "image": "assets/prototype/Stores_30_Lists.png"
+   }
+  ]
+ },
+ "Production": {
+  "file": "2 ISKO Production FY2027-28 (prototype).xlsx",
+  "sheets": [
+   {
+    "sheet": "README",
+    "kind": "doc",
+    "purpose": "How the book works, sheet order, colour legend, daily routine.",
+    "user": "Everyone",
+    "cols": [],
+    "image": "assets/prototype/Production_01_README.png"
+   },
+   {
+    "sheet": "Prod Entry",
+    "kind": "pad",
+    "purpose": "Daily production lines with batch hard stop and duplicate check.",
+    "user": "Production supervisors",
+    "cols": [
+     "Prod ID",
+     "Prod Date",
+     "Shift",
+     "Machine ID",
+     "Stage",
+     "Batch ID",
+     "Lot ID",
+     "Part ID",
+     "Product ID",
+     "Drawing / Rev",
+     "Qty",
+     "Wt/pc kg",
+     "Output kg",
+     "Scrap kg",
+     "Batch kg Left",
+     "Operator",
+     "Dup Key",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Production_02_Prod_Entry.png"
+   },
+   {
+    "sheet": "Rej-Rework Entry",
+    "kind": "pad",
+    "purpose": "Record rejections against the source line and rework outcomes.",
+    "user": "QC / Production",
+    "cols": [
+     "Event ID",
+     "Event Date",
+     "Event Type",
+     "Case ID",
+     "Source Prod ID",
+     "Part ID",
+     "Made Qty",
+     "Already Rejected",
+     "Qty",
+     "Reason Code",
+     "Disposition",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Production_03_Rej_Rework_Entry.png"
+   },
+   {
+    "sheet": "Production Register",
+    "kind": "reg",
+    "purpose": "All production lines (cutting, bending, fabrication).",
+    "user": "Read only (posted)",
+    "cols": [
+     "Prod ID",
+     "Prod Date",
+     "Shift",
+     "Machine ID",
+     "Stage",
+     "Batch ID",
+     "Lot ID",
+     "Product ID",
+     "Part ID",
+     "Drawing / Rev",
+     "Qty",
+     "Wt/pc kg",
+     "Output kg",
+     "Scrap kg",
+     "Operator",
+     "QC",
+     "Dup Key",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Production_04_Production_Register.png"
+   },
+   {
+    "sheet": "Rej-Rework Register",
+    "kind": "reg",
+    "purpose": "Rejection cases and rework outcomes, linked to the original production line.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Event ID",
+     "Event Date",
+     "Event Type",
+     "Case ID",
+     "Source Prod ID",
+     "Stage",
+     "Part ID",
+     "Qty",
+     "kg",
+     "Reason Code",
+     "Responsibility",
+     "Disposition",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Production_05_Rej_Rework_Register.png"
+   },
+   {
+    "sheet": "Batch Close Register",
+    "kind": "reg",
+    "purpose": "Batch closures with frozen variance.",
+    "user": "Production + Stores",
+    "cols": [
+     "Batch ID",
+     "Close Date",
+     "Net Batch kg",
+     "Output kg",
+     "Scrap kg",
+     "Variance kg",
+     "Var %",
+     "Variance Reason",
+     "Closed By",
+     "Approved By"
+    ],
+    "image": "assets/prototype/Production_06_Batch_Close_Register.png"
+   },
+   {
+    "sheet": "Batch Balance",
+    "kind": "bal",
+    "purpose": "Issued, returned, output, scrap, kg left, variance and status per batch.",
+    "user": "Production (read only)",
+    "cols": [
+     "Batch ID",
+     "Issue Date",
+     "Machine",
+     "Lot ID",
+     "Issued kg",
+     "Returned kg",
+     "Net kg",
+     "Cut Output kg",
+     "Cut Scrap kg",
+     "Stores Scrap kg",
+     "kg Left",
+     "Var %",
+     "Variance Rs",
+     "Lines",
+     "Days Open",
+     "Status"
+    ],
+    "image": "assets/prototype/Production_07_Batch_Balance.png"
+   },
+   {
+    "sheet": "WIP Balance",
+    "kind": "bal",
+    "purpose": "WIP by part and stage from postings only.",
+    "user": "Production (read only)",
+    "cols": [
+     "Part ID",
+     "Stage",
+     "Route",
+     "Next Stage",
+     "Qty In",
+     "Qty Moved On",
+     "Rejected (net)",
+     "WIP Qty",
+     "WIP kg",
+     "Status"
+    ],
+    "image": "assets/prototype/Production_08_WIP_Balance.png"
+   },
+   {
+    "sheet": "Daily Output",
+    "kind": "rpt",
+    "purpose": "Output by machine for a chosen date.",
+    "user": "Production head",
+    "cols": [
+     "Machine ID",
+     "Stage",
+     "Output kg",
+     "Scrap kg",
+     "Lines"
+    ],
+    "image": "assets/prototype/Production_09_Daily_Output.png"
+   },
+   {
+    "sheet": "X_Batch",
+    "kind": "imp",
+    "purpose": "Open batches issued by Stores, with returns.",
+    "user": "Read only",
+    "cols": [
+     "Batch ID",
+     "Issue Date",
+     "Machine ID",
+     "Lot ID",
+     "Material ID",
+     "Issued kg",
+     "Issued Sh",
+     "Returned kg",
+     "Stores Scrap kg",
+     "Rate Rs",
+     "Run ID"
+    ],
+    "image": "assets/prototype/Production_10_X_Batch.png"
+   },
+   {
+    "sheet": "X_Material",
+    "kind": "imp",
+    "purpose": "Material list for parts and BOM.",
+    "user": "Read only",
+    "cols": [
+     "Material ID",
+     "Grade",
+     "Thk mm",
+     "Active"
+    ],
+    "image": "assets/prototype/Production_11_X_Material.png"
+   },
+   {
+    "sheet": "X_Customer",
+    "kind": "imp",
+    "purpose": "Customer list for the product master.",
+    "user": "Read only",
+    "cols": [
+     "Customer ID",
+     "Customer",
+     "Active"
+    ],
+    "image": "assets/prototype/Production_12_X_Customer.png"
+   },
+   {
+    "sheet": "X_JWCSent",
+    "kind": "imp",
+    "purpose": "JWC quantities by part (moves WIP out of the last stage).",
+    "user": "Read only",
+    "cols": [
+     "Part ID",
+     "Sent on JWC Qty",
+     "Run ID"
+    ],
+    "image": "assets/prototype/Production_13_X_JWCSent.png"
+   },
+   {
+    "sheet": "M_Product",
+    "kind": "mst",
+    "purpose": "Products / models with customer and coating route.",
+    "user": "Production engineering",
+    "cols": [
+     "Product ID",
+     "Product Name",
+     "Customer ID",
+     "Category",
+     "BOM Model",
+     "Coating Route",
+     "Active",
+     "Effective From"
+    ],
+    "image": "assets/prototype/Production_14_M_Product.png"
+   },
+   {
+    "sheet": "M_Part",
+    "kind": "mst",
+    "purpose": "Drawing, revision, material, weight per piece, coating area, route.",
+    "user": "Production engineering",
+    "cols": [
+     "Part ID",
+     "Product ID",
+     "Part Name",
+     "Drawing No",
+     "Rev",
+     "Material ID",
+     "Thk mm",
+     "Wt/pc kg",
+     "Sq ft/pc",
+     "Route",
+     "Active"
+    ],
+    "image": "assets/prototype/Production_15_M_Part.png"
+   },
+   {
+    "sheet": "M_BOM_Model",
+    "kind": "mst",
+    "purpose": "BOM edition headers.",
+    "user": "Production engineering",
+    "cols": [
+     "BOM Model",
+     "Product ID",
+     "Edition",
+     "Effective From",
+     "Review Due",
+     "Set Wt kg"
+    ],
+    "image": "assets/prototype/Production_16_M_BOM_Model.png"
+   },
+   {
+    "sheet": "M_BOM",
+    "kind": "mst",
+    "purpose": "BOM lines (drives MIS RM requirement).",
+    "user": "Production engineering",
+    "cols": [
+     "BOM Model",
+     "SR No",
+     "Parent SR",
+     "Part ID",
+     "Material ID",
+     "Blank Wt kg",
+     "Qty/Set",
+     "Wt per Set kg",
+     "Costable"
+    ],
+    "image": "assets/prototype/Production_17_M_BOM.png"
+   },
+   {
+    "sheet": "M_Stage_Route",
+    "kind": "mst",
+    "purpose": "Stage order per part route; final stage and FG point.",
+    "user": "Production head",
+    "cols": [
+     "Route",
+     "Seq",
+     "Stage",
+     "Next Stage",
+     "Ends In"
+    ],
+    "image": "assets/prototype/Production_18_M_Stage_Route.png"
+   },
+   {
+    "sheet": "M_Machine",
+    "kind": "mst",
+    "purpose": "Machines and their process.",
+    "user": "Production head",
+    "cols": [
+     "Machine ID",
+     "Machine",
+     "Process",
+     "Status",
+     "Capacity kg/day (Phase 2)"
+    ],
+    "image": "assets/prototype/Production_19_M_Machine.png"
+   },
+   {
+    "sheet": "M_People",
+    "kind": "mst",
+    "purpose": "Operators, supervisors, QC, stores, approvers.",
+    "user": "HR / Production",
+    "cols": [
+     "Person ID",
+     "Name (masked)",
+     "Role",
+     "Department",
+     "Active"
+    ],
+    "image": "assets/prototype/Production_20_M_People.png"
+   },
+   {
+    "sheet": "M_Reason",
+    "kind": "mst",
+    "purpose": "Rejection reasons.",
+    "user": "QC",
+    "cols": [
+     "Code",
+     "Reason Group",
+     "Reason"
+    ],
+    "image": "assets/prototype/Production_21_M_Reason.png"
+   },
+   {
+    "sheet": "Control Totals",
+    "kind": "ctl",
+    "purpose": "Reconciliation totals.",
+    "user": "MIS / Finance",
+    "cols": [
+     "Register",
+     "Rows",
+     "Total Qty",
+     "Total kg"
+    ],
+    "image": "assets/prototype/Production_22_Control_Totals.png"
+   },
+   {
+    "sheet": "Refresh Log",
+    "kind": "ctl",
+    "purpose": "Proof that imports are fresh and complete.",
+    "user": "Book owner",
+    "cols": [
+     "Run ID",
+     "Refreshed At",
+     "Source File",
+     "Source Saved",
+     "Rows",
+     "Distinct IDs",
+     "Control kg",
+     "Status"
+    ],
+    "image": "assets/prototype/Production_23_Refresh_Log.png"
+   },
+   {
+    "sheet": "Settings",
+    "kind": "doc",
+    "purpose": "Financial year, as-on date, lock date, prefixes, tolerances, data folder.",
+    "user": "Book owner only",
+    "cols": [
+     "Setting",
+     "Value",
+     "Note"
+    ],
+    "image": "assets/prototype/Production_24_Settings.png"
+   },
+   {
+    "sheet": "Lists",
+    "kind": "doc",
+    "purpose": "Dropdown sources (movement types, forms, statuses, units).",
+    "user": "Book owner",
+    "cols": [
+     "Shift",
+     "QC",
+     "Event Type",
+     "Disposition"
+    ],
+    "image": "assets/prototype/Production_25_Lists.png"
+   }
+  ]
+ },
+ "Dispatch": {
+  "file": "3 ISKO Dispatch & Challan FY2027-28 (prototype).xlsx",
+  "sheets": [
+   {
+    "sheet": "README",
+    "kind": "doc",
+    "purpose": "How the book works, sheet order, colour legend, daily routine.",
+    "user": "Everyone",
+    "cols": [],
+    "image": "assets/prototype/Dispatch_01_README.png"
+   },
+   {
+    "sheet": "JWC Entry",
+    "kind": "pad",
+    "purpose": "Send parts to a coater: header + lines with availability and rate snapshot.",
+    "user": "Dispatch",
+    "cols": [
+     "Line",
+     "JWC Line ID",
+     "Batch ID",
+     "Part ID",
+     "Avail to Send",
+     "Qty NOS",
+     "Wt kg",
+     "Sq ft",
+     "Basis",
+     "PC Rate",
+     "PC Cost Rs",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Dispatch_02_JWC_Entry.png"
+   },
+   {
+    "sheet": "Coater Move Entry",
+    "kind": "pad",
+    "purpose": "Record coater returns OK and defects with decision.",
+    "user": "Dispatch",
+    "cols": [
+     "Coater Move ID",
+     "Move Date",
+     "Move Type",
+     "JWC Line ID",
+     "Pending",
+     "Qty NOS",
+     "Whose Fault",
+     "Decision",
+     "Coater Challan",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Dispatch_03_Coater_Move_Entry.png"
+   },
+   {
+    "sheet": "DC Entry",
+    "kind": "pad",
+    "purpose": "Dispatch to customer with FG / JWC hard stops and frozen UOM and rate.",
+    "user": "Dispatch",
+    "cols": [
+     "Line",
+     "DC Line ID",
+     "Req ID",
+     "Part ID",
+     "Qty",
+     "Available",
+     "UOM",
+     "Wt / Unit",
+     "Wt kg",
+     "Challan Qty",
+     "Rate Rs/kg",
+     "Value Rs",
+     "Ready / issues"
+    ],
+    "image": "assets/prototype/Dispatch_04_DC_Entry.png"
+   },
+   {
+    "sheet": "Requirement Register",
+    "kind": "reg",
+    "purpose": "Customer schedules with versions; pending from DC lines quoting Req ID.",
+    "user": "Dispatch / Sales",
+    "cols": [
+     "Req ID",
+     "Version",
+     "Revises",
+     "Entry Date",
+     "Customer ID",
+     "Product ID",
+     "Required Qty",
+     "Required Date",
+     "Priority",
+     "Status",
+     "Dispatched Qty",
+     "Pending Qty"
+    ],
+    "image": "assets/prototype/Dispatch_05_Requirement_Register.png"
+   },
+   {
+    "sheet": "JWC Header Register",
+    "kind": "reg",
+    "purpose": "One row per job-work challan.",
+    "user": "Read only (posted)",
+    "cols": [
+     "JWC No",
+     "JWC Date",
+     "Vendor ID",
+     "Vendor Name",
+     "Vehicle No",
+     "e-Way Bill",
+     "Purpose",
+     "Status",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Dispatch_06_JWC_Header_Register.png"
+   },
+   {
+    "sheet": "JWC Line Register",
+    "kind": "reg",
+    "purpose": "Parts sent to coaters.",
+    "user": "Read only (posted)",
+    "cols": [
+     "JWC Line ID",
+     "JWC No",
+     "JWC Date",
+     "Vendor ID",
+     "Batch ID",
+     "Part ID",
+     "Qty NOS",
+     "Wt kg",
+     "Sq ft",
+     "Basis",
+     "PC Rate",
+     "PC Cost Rs",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Dispatch_07_JWC_Line_Register.png"
+   },
+   {
+    "sheet": "Coater Move Register",
+    "kind": "reg",
+    "purpose": "Coater opening (cut-over), returns OK, defects with decision and debit.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Coater Move ID",
+     "Move Date",
+     "Move Type",
+     "Vendor ID",
+     "JWC Line ID",
+     "Part ID",
+     "Qty NOS",
+     "Wt kg",
+     "Whose Fault",
+     "Decision",
+     "Debit Rs",
+     "Coater Challan",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Dispatch_08_Coater_Move_Register.png"
+   },
+   {
+    "sheet": "DC Header Register",
+    "kind": "reg",
+    "purpose": "One row per delivery challan.",
+    "user": "Read only (posted)",
+    "cols": [
+     "Challan No",
+     "DC Date",
+     "Customer ID",
+     "Dispatch From",
+     "Vehicle No",
+     "LR No",
+     "Invoice No",
+     "e-Way Bill",
+     "Status",
+     "Posted At"
+    ],
+    "image": "assets/prototype/Dispatch_09_DC_Header_Register.png"
+   },
+   {
+    "sheet": "DC Line Register",
+    "kind": "reg",
+    "purpose": "Delivery lines.",
+    "user": "Read only (posted)",
+    "cols": [
+     "DC Line ID",
+     "Challan No",
+     "DC Date",
+     "Req ID",
+     "Dispatch From",
+     "JWC Line ID",
+     "Part ID",
+     "Batch ID",
+     "Type",
+     "Qty",
+     "UOM",
+     "Wt kg",
+     "Challan Qty",
+     "Rate Rs/kg",
+     "Value Rs"
+    ],
+    "image": "assets/prototype/Dispatch_10_DC_Line_Register.png"
+   },
+   {
+    "sheet": "Open JWC Balance",
+    "kind": "bal",
+    "purpose": "Material pending at each coater by JWC line with ageing.",
+    "user": "Dispatch (read only)",
+    "cols": [
+     "JWC Line ID",
+     "Vendor ID",
+     "JWC Date",
+     "Part ID",
+     "Sent",
+     "Back OK",
+     "Defect Back",
+     "Direct DC",
+     "Pending Qty",
+     "Pending kg",
+     "Days",
+     "Status"
+    ],
+    "image": "assets/prototype/Dispatch_11_Open_JWC_Balance.png"
+   },
+   {
+    "sheet": "FG Balance",
+    "kind": "bal",
+    "purpose": "FG available by part for the dispatch hard stop.",
+    "user": "Dispatch (read only)",
+    "cols": [
+     "Part ID",
+     "FG Opening",
+     "In: Back OK",
+     "In: Uncoated",
+     "Out: DC from Factory",
+     "FG Available",
+     "Status"
+    ],
+    "image": "assets/prototype/Dispatch_12_FG_Balance.png"
+   },
+   {
+    "sheet": "M_Customer",
+    "kind": "mst",
+    "purpose": "Customers with GSTIN, ledger, default dispatch UOM.",
+    "user": "Dispatch / Accounts",
+    "cols": [
+     "Customer ID",
+     "Customer Name",
+     "State Code",
+     "GSTIN",
+     "Tally Ledger",
+     "Dispatch UOM",
+     "Active"
+    ],
+    "image": "assets/prototype/Dispatch_13_M_Customer.png"
+   },
+   {
+    "sheet": "Customer Price & UOM",
+    "kind": "mst",
+    "purpose": "Sale rate, unit and weight per unit per customer-product.",
+    "user": "Dispatch / Accounts",
+    "cols": [
+     "Customer ID",
+     "Product ID",
+     "Part ID",
+     "UOM",
+     "Wt per Unit kg",
+     "Rate Rs/kg",
+     "Effective From"
+    ],
+    "image": "assets/prototype/Dispatch_14_Customer_Price_UOM.png"
+   },
+   {
+    "sheet": "M_Vendor",
+    "kind": "mst",
+    "purpose": "Powder coaters / sub-contractors.",
+    "user": "Dispatch",
+    "cols": [
+     "Vendor ID",
+     "Vendor Name",
+     "GSTIN",
+     "Status"
+    ],
+    "image": "assets/prototype/Dispatch_15_M_Vendor.png"
+   },
+   {
+    "sheet": "Coater Rate",
+    "kind": "mst",
+    "purpose": "Coating rate history.",
+    "user": "Dispatch / Accounts",
+    "cols": [
+     "Vendor ID",
+     "Basis",
+     "Rate Rs",
+     "Effective From"
+    ],
+    "image": "assets/prototype/Dispatch_16_Coater_Rate.png"
+   },
+   {
+    "sheet": "X_Product",
+    "kind": "imp",
+    "purpose": "Parts with weight and coating area.",
+    "user": "Read only",
+    "cols": [
+     "Part ID",
+     "Product ID",
+     "Wt/pc kg",
+     "Sq ft/pc",
+     "Coating Route"
+    ],
+    "image": "assets/prototype/Dispatch_17_X_Product.png"
+   },
+   {
+    "sheet": "X_ProdOutput",
+    "kind": "imp",
+    "purpose": "What production can send on job work.",
+    "user": "Read only",
+    "cols": [
+     "Batch ID",
+     "Part ID",
+     "QC-OK Qty",
+     "Already on JWC",
+     "Available to Send",
+     "Run ID"
+    ],
+    "image": "assets/prototype/Dispatch_18_X_ProdOutput.png"
+   },
+   {
+    "sheet": "Control Totals",
+    "kind": "ctl",
+    "purpose": "Reconciliation totals.",
+    "user": "MIS / Finance",
+    "cols": [
+     "Register",
+     "Rows",
+     "Total Qty",
+     "Total kg / Rs"
+    ],
+    "image": "assets/prototype/Dispatch_19_Control_Totals.png"
+   },
+   {
+    "sheet": "Settings",
+    "kind": "doc",
+    "purpose": "Financial year, as-on date, lock date, prefixes, tolerances, data folder.",
+    "user": "Book owner only",
+    "cols": [
+     "Setting",
+     "Value",
+     "Note"
+    ],
+    "image": "assets/prototype/Dispatch_20_Settings.png"
+   },
+   {
+    "sheet": "Lists",
+    "kind": "doc",
+    "purpose": "Dropdown sources (movement types, forms, statuses, units).",
+    "user": "Book owner",
+    "cols": [
+     "Coater Move Type",
+     "Decision",
+     "DC Type",
+     "UOM"
+    ],
+    "image": "assets/prototype/Dispatch_21_Lists.png"
+   }
+  ]
+ },
+ "MIS": {
+  "file": "4 ISKO MIS FY2027-28 (prototype).xlsx",
+  "sheets": [
+   {
+    "sheet": "README",
+    "kind": "doc",
+    "purpose": "How the book works, sheet order, colour legend, daily routine.",
+    "user": "Everyone",
+    "cols": [],
+    "image": "assets/prototype/MIS_01_README.png"
+   },
+   {
+    "sheet": "Control Tower",
+    "kind": "rpt",
+    "purpose": "Director KPIs, data-freshness banner and dispatch trend.",
+    "user": "MD / heads",
+    "cols": [
+     "KPI",
+     "Value",
+     "Unit",
+     "Previous Month",
+     "Owner",
+     "Source"
+    ],
+    "image": "assets/prototype/MIS_02_Control_Tower.png"
+   },
+   {
+    "sheet": "Exceptions",
+    "kind": "rpt",
+    "purpose": "Open exceptions by owner and age.",
+    "user": "Each owner; MD reviews",
+    "cols": [
+     "Exception ID",
+     "Code",
+     "Exception",
+     "Severity",
+     "Owner",
+     "Source Row ID",
+     "First Seen",
+     "Days Open",
+     "Action Note"
+    ],
+    "image": "assets/prototype/MIS_03_Exceptions.png"
+   },
+   {
+    "sheet": "Refresh Log",
+    "kind": "ctl",
+    "purpose": "Proof of freshness and completeness of every extract.",
+    "user": "MIS owner",
+    "cols": [
+     "Run ID",
+     "Source Book",
+     "Extract",
+     "Refreshed At",
+     "Source Saved",
+     "Rows",
+     "Distinct IDs",
+     "Control kg",
+     "Source Control kg",
+     "Status"
+    ],
+    "image": "assets/prototype/MIS_04_Refresh_Log.png"
+   },
+   {
+    "sheet": "Stock & WIP",
+    "kind": "rpt",
+    "purpose": "RM, WIP, at-coater, FG and consumable positions.",
+    "user": "Directors / Finance",
+    "cols": [
+     "Position",
+     "kg",
+     "Rs",
+     "Items / lines",
+     "Oldest (days)",
+     "Owner"
+    ],
+    "image": "assets/prototype/MIS_05_Stock_WIP.png"
+   },
+   {
+    "sheet": "Production & Yield",
+    "kind": "rpt",
+    "purpose": "Output, yield, scrap, rejection trend.",
+    "user": "Production head",
+    "cols": [
+     "Month",
+     "RM Issued kg",
+     "Cut Output kg",
+     "Yield (closed)",
+     "Scrap kg",
+     "Scrap Rs",
+     "Rejected kg",
+     "Rejection %"
+    ],
+    "image": "assets/prototype/MIS_06_Production_Yield.png"
+   },
+   {
+    "sheet": "Dispatch & JWC",
+    "kind": "rpt",
+    "purpose": "Dispatch and coating trend.",
+    "user": "Dispatch head",
+    "cols": [
+     "Month",
+     "Dispatched kg",
+     "Dispatch Rs",
+     "Rs / kg",
+     "Sent to Coater kg",
+     "PC Cost Rs",
+     "PC Rs / kg"
+    ],
+    "image": "assets/prototype/MIS_07_Dispatch_JWC.png"
+   },
+   {
+    "sheet": "RM Requirement",
+    "kind": "rpt",
+    "purpose": "Purchase need by material for PO decisions.",
+    "user": "Purchase",
+    "cols": [
+     "Material ID",
+     "Required kg (open req x BOM)",
+     "RM Stock kg",
+     "On Order kg",
+     "To Buy kg",
+     "Min Level kg",
+     "Action"
+    ],
+    "image": "assets/prototype/MIS_08_RM_Requirement.png"
+   },
+   {
+    "sheet": "Lot Trace",
+    "kind": "rpt",
+    "purpose": "End-to-end trace of one lot by IDs.",
+    "user": "Anyone",
+    "cols": [
+     "Step",
+     "ID",
+     "Date",
+     "Detail",
+     "kg / Qty",
+     "Book"
+    ],
+    "image": "assets/prototype/MIS_09_Lot_Trace.png"
+   },
+   {
+    "sheet": "DC Trace",
+    "kind": "rpt",
+    "purpose": "Backward trace from a delivery challan.",
+    "user": "Anyone",
+    "cols": [
+     "DC Line",
+     "Part",
+     "JWC Line",
+     "Batch",
+     "Lot",
+     "GRN Date",
+     "Supplier",
+     "PO Line"
+    ],
+    "image": "assets/prototype/MIS_10_DC_Trace.png"
+   },
+   {
+    "sheet": "MRM Monthly",
+    "kind": "rpt",
+    "purpose": "Monthly management review pack.",
+    "user": "MD",
+    "cols": [
+     "Section",
+     "This Month",
+     "Last Month",
+     "Comment (typed in review)"
+    ],
+    "image": "assets/prototype/MIS_11_MRM_Monthly.png"
+   },
+   {
+    "sheet": "X_KPI_Month",
+    "kind": "imp",
+    "purpose": "Monthly KPI summary (Power Query output).",
+    "user": "Read only",
+    "cols": [
+     "Month",
+     "RM Issued kg",
+     "Cut Output kg",
+     "Net Batch kg (closed)",
+     "Cut Output kg (closed)",
+     "Scrap kg",
+     "Scrap Rs",
+     "Rejected kg",
+     "Dispatched kg",
+     "Dispatch Rs",
+     "PC Cost Rs",
+     "Sent to Coater kg"
+    ],
+    "image": "assets/prototype/MIS_12_X_KPI_Month.png"
+   },
+   {
+    "sheet": "X_Balances",
+    "kind": "imp",
+    "purpose": "Current stock positions.",
+    "user": "Read only",
+    "cols": [
+     "Position",
+     "Owner Book",
+     "kg",
+     "Rs",
+     "Items",
+     "Oldest Days"
+    ],
+    "image": "assets/prototype/MIS_13_X_Balances.png"
+   },
+   {
+    "sheet": "Settings",
+    "kind": "doc",
+    "purpose": "Financial year, as-on date, lock date, prefixes, tolerances, data folder.",
+    "user": "Book owner only",
+    "cols": [
+     "Setting",
+     "Value",
+     "Note"
+    ],
+    "image": "assets/prototype/MIS_14_Settings.png"
+   }
+  ]
+ }
+}
